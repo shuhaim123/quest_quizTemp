@@ -53,6 +53,13 @@
     </script>
 
     <style>
+        .malayalam-text {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            line-height: 1.7;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
         body {
             background-color: #FDFCF8;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a24a' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -201,9 +208,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">Fill Details Carefully</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">Enter your full name and WhatsApp number
-                                    correctly before starting.</p>
+                                <h4 class="font-bold text-navy text-lg mb-1">ലോഗിൻ</h4>
+                                <p class="text-navy/70 text-sm leading-relaxed">പേര്, വാട്സ്ആപ്പ് നമ്പർ, പാസ്വേഡ് എന്നിവ നൽകി 'Start quiz' ക്ലിക്ക് ചെയ്യുക.</p>
                             </div>
                         </div>
 
@@ -216,10 +222,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">Time Limit</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">The timer starts immediately after
-                                    clicking
-                                    "Start Quiz". You have 30 minutes.</p>
+                                <h4 class="font-bold text-navy text-lg mb-1">സമയം</h4>
+                                <p class="text-navy/70 text-sm leading-relaxed">ആഗസ്റ്റ് 16 (ഞായർ) വൈകുന്നേരം 5:00 - 5:20 (തുടർന്ന് പ്രവേശനം ലഭിക്കില്ല).</p>
                             </div>
                         </div>
 
@@ -233,9 +237,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">Questions</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">Read every question carefully. The quiz
-                                    contains 17 MCQs and 3 Short Answers.</p>
+                                <h4 class="font-bold text-navy text-lg mb-1">ചോദ്യങ്ങൾ</h4>
+                                <p class="text-navy/70 text-sm leading-relaxed">ആകെ 30 (20 MCQ + 10 ഷോർട്ട് ആൻസർ).</p>
                             </div>
                         </div>
                     </div>
@@ -252,43 +255,23 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">One Attempt Only</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">You can submit this quiz only once. Do
-                                    not
-                                    refresh the page and ensure a stable connection.</p>
+                                <h4 class="font-bold text-navy text-lg mb-1">സബ്മിഷൻ</h4>
+                                <p class="text-navy/70 text-sm leading-relaxed">ഒരു തവണ മാത്രം.</p>
                             </div>
                         </div>
 
                         <div class="flex gap-4">
                             <div
-                                class="flex-shrink-0 w-12 h-12 rounded-full bg-cream-dark flex items-center justify-center text-gold">
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-red-50 border border-red-100 flex items-center justify-center text-red-500">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
                                     </path>
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">Fair Play</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">Any unfair means or violation of rules
-                                    may
-                                    lead to immediate disqualification.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 rounded-full bg-cream-dark flex items-center justify-center text-gold">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-navy text-lg mb-1">Results</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">Results will be announced after manual
-                                    evaluation of the short-answer questions.</p>
+                                <h4 class="font-bold text-red-500 text-lg mb-1">പ്രത്യേക ശ്രദ്ധയ്ക്ക്</h4>
+                                <p class="text-navy/70 text-sm leading-relaxed">പേജ് റീഫ്രഷ് ചെയ്യുകയോ ടാബ് മാറ്റുകയോ ചെയ്താൽ മത്സരം റദ്ദാകും.</p>
                             </div>
                         </div>
                     </div>
@@ -592,7 +575,7 @@
                 </div>
 
                 <!-- Quiz Content Area -->
-                <div id="quizContentArea" class="hidden flex-col flex-1 max-w-3xl w-full mx-auto">
+                <div id="quizContentArea" class="hidden flex-col flex-1 max-w-3xl w-full mx-auto h-full relative">
                     <!-- Question Header -->
                     <div class="mb-6 flex justify-between items-center border-b border-navy/10 pb-4">
                         <h2 class="text-lg md:text-xl font-bold text-navy">
@@ -601,13 +584,13 @@
                     </div>
 
                     <!-- Question Body -->
-                    <div id="questionBody" class="flex-1 mb-8">
+                    <div id="questionBody" class="flex-1 mb-4">
                         <!-- Dynamically populated -->
                     </div>
 
                     <!-- Footer Navigation -->
                     <div
-                        class="mt-auto pt-6 border-t border-navy/10 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
+                        class="sticky bottom-0 -mx-6 md:-mx-10 px-6 md:px-10 pb-6 md:pb-10 pt-4 bg-cream border-t border-navy/10 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 z-20 mt-auto">
                         <div class="flex justify-between w-full sm:w-auto gap-3 order-2 sm:order-1">
                             <button id="btnPrev" onclick="handlePrevious()"
                                 class="flex-1 sm:flex-none px-6 py-3 rounded-xl font-bold border-2 border-navy/20 text-navy hover:bg-navy/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-center">
@@ -1186,8 +1169,11 @@
             currentQNumEl.textContent = index + 1;
             totalQNumEl.textContent = quizQuestions.length;
 
+            // Format long statement questions (i, ii, iii, etc.) with line breaks
+            let formattedTitle = question.title.replace(/\s+((?:i{1,3}|iv|v|vi)[\)-])/gi, '<br><br>$1');
+
             // Build Question Body
-            let html = `<div class="mb-6"><h3 class="text-xl md:text-2xl font-bold text-navy mb-2 leading-tight">${question.title}</h3></div>`;
+            let html = `<div class="mb-6"><h3 class="text-xl md:text-2xl font-bold text-navy mb-2 malayalam-text">${formattedTitle}</h3></div>`;
 
             const savedAnswer = quizAnswers[question.id] || "";
 
@@ -1198,14 +1184,14 @@
                     html += `
                         <label class="flex items-center p-4 rounded-xl border-2 border-navy/10 cursor-pointer hover:bg-navy/5 transition-colors focus-within:border-gold">
                             <input type="radio" name="q_${question.id}" value="${opt}" ${isChecked} class="w-5 h-5 text-gold border-navy/20 focus:ring-gold" onchange="saveAnswer('${question.id}', this.value)">
-                            <span class="ml-4 text-navy font-medium text-lg">${opt}</span>
+                            <span class="ml-4 text-navy font-medium text-lg malayalam-text">${opt}</span>
                         </label>
                     `;
                 });
                 html += `</div>`;
             } else {
                 html += `
-                    <textarea id="q_${question.id}" class="w-full form-input h-40 resize-y p-4 text-lg" placeholder="Type your answer here..." oninput="saveAnswer('${question.id}', this.value)">${savedAnswer}</textarea>
+                    <textarea id="q_${question.id}" class="w-full form-input h-40 resize-y p-4 text-lg malayalam-text" placeholder="Type your answer here..." oninput="saveAnswer('${question.id}', this.value)">${savedAnswer}</textarea>
                 `;
             }
 
