@@ -209,7 +209,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-navy text-lg mb-1">ലോഗിൻ</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">പേര്, വാട്സ്ആപ്പ് നമ്പർ, പാസ്‌വേഡ് എന്നിവ നൽകി 'Start quiz' ക്ലിക്ക് ചെയ്യുക.</p>
+                                <p class="text-navy/70 text-sm leading-relaxed">പേര്, വാട്സ്ആപ്പ് നമ്പർ, പാസ്വേഡ് എന്നിവ
+                                    നൽകി 'Start quiz' ക്ലിക്ക് ചെയ്യുക.</p>
                             </div>
                         </div>
 
@@ -223,7 +224,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-navy text-lg mb-1">സമയം</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">ആഗസ്റ്റ് 16 (ഞായർ) വൈകുന്നേരം 5:00 - 5:20 (തുടർന്ന് പ്രവേശനം ലഭിക്കില്ല).</p>
+                                <p class="text-navy/70 text-sm leading-relaxed">ആഗസ്റ്റ് 16 (ഞായർ) വൈകുന്നേരം 5:00 -
+                                    5:20 (തുടർന്ന് പ്രവേശനം ലഭിക്കില്ല).</p>
                             </div>
                         </div>
 
@@ -271,7 +273,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-red-500 text-lg mb-1">പ്രത്യേക ശ്രദ്ധയ്ക്ക്</h4>
-                                <p class="text-navy/70 text-sm leading-relaxed">പേജ് റീഫ്രഷ് ചെയ്യുകയോ ടാബ് മാറ്റുകയോ ചെയ്താൽ മത്സരം റദ്ദാകും.</p>
+                                <p class="text-navy/70 text-sm leading-relaxed">പേജ് റീഫ്രഷ് ചെയ്യുകയോ ടാബ് മാറ്റുകയോ
+                                    ചെയ്താൽ മത്സരം റദ്ദാകും.</p>
                             </div>
                         </div>
                     </div>
@@ -1102,7 +1105,23 @@
                 }
 
                 if (data && data.success && data.questions && data.questions.length > 0) {
-                    quizQuestions = data.questions;
+                    // 1. Separate questions by type
+                    const mcqs = data.questions.filter(q => q.type === 'MULTIPLE_CHOICE');
+                    const texts = data.questions.filter(q => q.type !== 'MULTIPLE_CHOICE');
+
+                    // 2. Fisher-Yates shuffle function
+                    const shuffleArray = (array) => {
+                        let cur = array.length, rand;
+                        while (cur !== 0) {
+                            rand = Math.floor(Math.random() * cur);
+                            cur--;
+                            [array[cur], array[rand]] = [array[rand], array[cur]];
+                        }
+                        return array;
+                    };
+
+                    // 3. Set the new shuffled master array (MCQs first, then Short Answers)
+                    quizQuestions = [...shuffleArray(mcqs), ...shuffleArray(texts)];
                     globalSchedule = data.schedule || globalSchedule;
                     if (globalSchedule) {
                         globalSchedule.alwaysOpen = (globalSchedule.alwaysOpen === true || String(globalSchedule.alwaysOpen).toLowerCase() === 'true');
@@ -1611,10 +1630,10 @@
             if (!antiCheatTimer) {
                 console.debug("ANTI-CHEAT: tab switch detected");
                 tabSwitchCount++;
-                
+
                 // Set absolute deadline based on wall-clock time
                 antiCheatDeadline = Date.now() + (ANTI_CHEAT_GRACE_SEC * 1000);
-                
+
                 if (acCountdownEl) acCountdownEl.textContent = ANTI_CHEAT_GRACE_SEC;
 
                 if (acOverlay) {
@@ -1625,10 +1644,10 @@
                 console.debug("ANTI-CHEAT: 5 second countdown started");
                 antiCheatTimer = setInterval(() => {
                     if (!antiCheatDeadline) return;
-                    
+
                     const msLeft = antiCheatDeadline - Date.now();
                     const secLeft = Math.max(0, Math.ceil(msLeft / 1000));
-                    
+
                     if (acCountdownEl) acCountdownEl.textContent = secLeft;
 
                     if (msLeft <= 0) {
@@ -1651,7 +1670,7 @@
             if (isQuizActive()) {
                 const now = Date.now();
                 const nowMsServer = now + serverTimeOffset;
-                
+
                 // 1. Did the main quiz timer expire?
                 if (sessionEndTime && nowMsServer > sessionEndTime) {
                     console.debug("TIMER: expired while backgrounded");
@@ -1661,7 +1680,7 @@
                     }
                     return;
                 }
-                
+
                 // 2. Did the anti-cheat deadline expire?
                 if (antiCheatDeadline && now >= antiCheatDeadline) {
                     console.debug("ANTI-CHEAT: deadline passed while hidden");
@@ -1674,7 +1693,7 @@
                     }
                     return;
                 }
-                
+
                 // 3. Did the leave quiz popup expire?
                 if (leaveQuizDeadline && now >= leaveQuizDeadline) {
                     console.debug("LEAVE-QUIZ: deadline passed while hidden");
@@ -1694,7 +1713,7 @@
                 clearInterval(antiCheatTimer);
                 antiCheatTimer = null;
                 antiCheatDeadline = null;
-                
+
                 const acOverlay = document.getElementById('antiCheatOverlay');
                 if (acOverlay) {
                     acOverlay.classList.add('hidden');
@@ -1768,15 +1787,15 @@
                     // Start 5 second countdown with absolute deadline
                     if (leaveQuizTimer) clearInterval(leaveQuizTimer);
                     leaveQuizDeadline = Date.now() + 5000;
-                    
+
                     if (leaveCountdownEl) leaveCountdownEl.textContent = 5;
 
                     leaveQuizTimer = setInterval(() => {
                         if (!leaveQuizDeadline) return;
-                        
+
                         const msLeft = leaveQuizDeadline - Date.now();
                         const secLeft = Math.max(0, Math.ceil(msLeft / 1000));
-                        
+
                         if (leaveCountdownEl) leaveCountdownEl.textContent = secLeft;
 
                         if (msLeft <= 0) {
